@@ -1,0 +1,96 @@
+#game {
+    width: 342px;
+    height: 620px;
+    border: 1px solid #000;
+}
+
+#board {
+    height: 400px;
+    border-bottom: 1px solid  #000;
+    padding-top: 60px;
+    position: relative;
+    background: url('image/background.png');
+    background-size: 615px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#controls {
+    height: 50px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#controls div  button{
+    width: 50px;
+    height: 40px;
+    font-size: 10px;
+    border-radius: 50%;
+}
+#controls div {
+  /*  display: inline-block;*/
+  margin: 0;
+}
+
+#left, #right {
+    display: inline-block;
+    margin: 0 22px !important;
+}
+#player {
+    position: absolute;
+    top: 200px;
+    left: 130px;
+    width: 55px;
+    height: 60px;
+    background: url('image/x.png');
+    background-size: 70px;
+    background-repeat: no-repeat;
+}
+#control-left{
+    width: 60%;
+  float: left;
+  margin: 10px;
+}
+
+#control-right{
+    width: 40%;
+  float: right;
+
+}
+
+#control-right div{
+    margin: 15px 0;
+
+}
+
+.web {
+    position: absolute;
+    display: none;
+    background: url(image/web.jpg);
+    width: 8px;
+    height: 8px;
+
+}
+.enemy {
+    Position: absolute;
+    top: 175px;
+    left: 250px;
+    width: 72px;
+    height: 72px;
+    background: url('image/enemy.png');
+    background-size: 76px;
+    background-repeat: no-repeat;
+}
+.score{
+    color: white;
+}
+#healthbar {
+    background: #00ff00;
+    height: 20px;
+    width: 100px;
+}
+.health {
+    border: 1px solid white;
+    height: 20px; 
+    width: 100px;
+}

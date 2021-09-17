@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"></s>
+</head>
+<body>
+    <div id="game">
+        <div id="board">
+            <div id="player"></div>
+            <div id="score" class="score">Score: 0</div>
+            <div id="healthbar">
+                <div class="health"></div>
+            </div>
+           <button id="start" onclick="start()">START</button>
+        </div>
+        <div id="controls">
+            <div id="control-left">
+            <div id="up"><button onclick="up()">UP</button></div>
+            <div id="left"><button onclick="left()">LEFT</button></div>
+            <div id="right"><button onclick="right()">RIGHT</button></div>
+            <div id="down"><button onclick="down()">DOWN</button></div>
+        </div>
+        <div id="control-right">
+            <div id="jump"><button onclick="jump()">JUMP</button></div>
+            <div id="attack"><button onclick="attack()">ATTACK</button></div>
+        </div>
+        </div>
+        <audio controls autoplay loop hidden> 
+            <source src="sound/bgmusic.mp3"></audio>
+    </div>
+
+ 
+    <audio data-key="38" src="sound/clap.wav"></audio>
+    <audio data-key="39"src="sound/kick.wav"></audio>
+    <audio data-key="37" src="sound/snare.wav"></audio>
+    <audio data-key="40" src="sound/notification.wav"></audio>
+  
+
+    <script src="main.js"></script>
+
+</body>
+</html> 
