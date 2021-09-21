@@ -84,13 +84,22 @@
 .score{
     color: white;
 }
-#healthbar {
-    background: #00ff00;
+.healthbar {
+    background: #00ff00; 
     height: 20px;
     width: 100px;
 }
-.health {
+#health {
     border: 1px solid white;
     height: 20px; 
     width: 100px;
+}
+
+#gameover {
+    position: absolute;
+    padding: 50px;
+    background: #ffff;
+    top: 40%;
+    left: 20%;
+    display: none;
 }

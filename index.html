@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css"></s>
@@ -10,10 +9,11 @@
 <body>
     <div id="game">
         <div id="board">
+            <div id="gameover">GAME OVER</div>
             <div id="player"></div>
             <div id="score" class="score">Score: 0</div>
-            <div id="healthbar">
-                <div class="health"></div>
+            <div id="health">
+                <div class="healthbar"></div>
             </div>
            <button id="start" onclick="start()">START</button>
         </div>
@@ -32,7 +32,7 @@
         <audio controls autoplay loop hidden> 
             <source src="sound/bgmusic.mp3"></audio>
     </div>
-
+    
  
     <audio data-key="38" src="sound/clap.wav"></audio>
     <audio data-key="39"src="sound/kick.wav"></audio>

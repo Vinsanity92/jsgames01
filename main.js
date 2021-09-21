@@ -2,7 +2,7 @@ var web=[];
 var enemy=[];
 var score = 0;
 var gInt;
-var healthbar;
+var health=100;
 
 function up() {
     var t = parseInt(document.querySelector('#player').style.top);
@@ -93,13 +93,10 @@ var b = document.createElement('div');
     b.style.left = (leftB+50)+'px'; 
     b.style.display = 'block';
     document.querySelector('#board').appendChild(b);
-    
     //while (leftB<=300){
         //setTimeout(function(){document.querySelector('#web').style.left = leftB+'px'},leftB);
         //leftB = leftB + 10;
 //}
-   
-
  web[bID] = setInterval(function(){
      document.querySelector('#'+bID).style.left = leftB+'px';
      leftB = leftB + 10;
@@ -115,8 +112,6 @@ if(leftB>=500){
 function createEnemy() {
     var topE = Math.floor(Math.random() * 420);
     var leftE = 360;
-
-    
     var eID = 'enemy'+Date.now();
         console.log(eID);
     var e = document.createElement('div');
@@ -133,50 +128,17 @@ function createEnemy() {
         //     leftB = leftB + 10;
  enemy[eID] = setInterval(function(){
          document.querySelector('#'+eID).style.left = leftE+'px';
-         leftE = leftE + 8;
-    if(leftE<=0){
+         leftE = leftE - 8;
+         checkPhit ();
+    if(leftE<=-30 ){
             clearInterval(enemy[eID]);
             document.querySelector('#'+eID).style.display = 'none';
-            document.querySelector('#board').removeChild(document.querySelector
-                ('#'+eID));
-         }
-        }, 400);
+        updatehealth();
+        
     }
-    function healthbar(h) {
-        var h = document.querySelector('#'+h);
-        var e = document.querySelectorAll('.enemy'), i;
-    for (i = 0; i < e.length; --i) {
-      // console.log(e[i].style.top); 
-      // console.log(e[i].style.left);
-      var hitL = false;
-      var hitP = false;
-          if(parseInt(h.style.left)>=parseInt(h[i].style.left)
-      && (parseInt(h.style.left)<=parseInt(h[i].style.left)+72)){
-          // console.log('hit left')
-          hitL = true;
-      }
-      if(parseInt(h.style.top)>=parseInt(h[i].style.top)
-      && (parseInt(h.style.top)<=parseInt(h[i].style.top)+72)){
-          // console.log('hit top')
-          hitP =- true;
+        }, 300);
     }
-      if(hitL && hitP){
-          console.log('health'); 
-          health--;
-          document.querySelector('.healtbar').innerHTML='healthbar'+healthbar;
-          if(healthbar<=0) gameOver();
-          document.querySelector('#board').removeChild(document.querySelector
-              ('#'+h[i].getAttribute('id')));
-          document.querySelector('#board').removeChild(document.querySelector
-              ('#'+h.getAttribute('id')));   
-              clearInterval(healthbar[h.getAttribute('id')]);
-              clearInterval(enemy[e[i].getAttribute('id')]);
     
-      
-      }
-    }
-      } 
-
 function checkHit (b) {
       var b = document.querySelector('#'+b);
       var e = document.querySelectorAll('.enemy'), i;
@@ -212,17 +174,56 @@ for (i = 0; i < e.length; ++i) {
 }
     } 
 
+    function checkPhit () {
+        var b = document.querySelector('#player');
+        var e = document.querySelectorAll('.enemy'), i;
+  
+  for (i = 0; i < e.length; ++i) {
+      // console.log(e[i].style.top); 
+      // console.log(e[i].style.left);
+      var hitL = false;
+      var hitP = false;
+          if(parseInt(b.style.left)>=parseInt(e[i].style.left)
+      && (parseInt(b.style.left)<=parseInt(e[i].style.left)+72)){
+          // console.log('hit left')
+          hitL = true;
+      }
+      if(parseInt(b.style.top)>=parseInt(e[i].style.top)
+      && (parseInt(b.style.top)<=parseInt(e[i].style.top)+72)){
+          // console.log('hit top')
+          hitP = true;
+  }
+      if(hitL && hitP){
+        updatehealth()
+          document.querySelector('#board').removeChild(document.querySelector
+              ('#'+e[i].getAttribute('id')));
+              clearInterval(enemy[e[i].getAttribute('id')]);
+      
+      }
+  }
+      } 
+
+function updatehealth(){
+    health--;
+    if(health<=0){
+        gameOver()
+        }
+    // document.querySelector('#health').innerHTML = 'health: '+health;
+    document.querySelector('.healthbar').style.width = health+'px';
+    
+} 
+
 function start() {
     document.querySelector('#start').style.display='none';
-
     gInt = setInterval(function(){
       createEnemy();
-       }, 3000);
+       }, 2000);
 }
 
 function gameOver(){
-    clearInterval(gInt);
-    console.log('GAMEOVER');
+    document.querySelector('#gameover').style.display='block';
+        clearInterval(gInt);
+        console.log('GAME OVER');
 }
 
 
